@@ -2,6 +2,16 @@
 
 This is an official starter Turborepo.
 
+
+## Quickstart
+
+This assumes that you have installed `turbo` globally
+
+```
+yarn
+turbo dev
+```
+
 ## Using this example
 
 Run the following command:
