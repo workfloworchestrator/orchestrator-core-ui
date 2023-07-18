@@ -1,4 +1,4 @@
-import { Button, Header } from "ui";
+import { Button, Header } from "@orchestrator-ui/orchestrator-ui-components";
 
 export default function Page() {
   return (
