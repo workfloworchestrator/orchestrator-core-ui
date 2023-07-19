@@ -1,4 +1,4 @@
 module.exports = {
-  reactStrictMode: true,
-  transpilePackages: ["ui"],
+  reactStrictMode: false,
+  transpilePackages: ["@orchestrator-ui/orchestrator-ui-components"],
 };
