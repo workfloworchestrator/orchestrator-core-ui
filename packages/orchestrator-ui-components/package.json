@@ -6,24 +6,30 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component"
+    "generate:component": "turbo gen react-component",
+    "tsc": "tsc --noEmit"
   },
   "comments": {
     "key": "Not sure about the 'dependencies'; the example had empty ones, do we need next and eui here?"
   },
   "peerDependencies": {
-    "react-query": "3.39.3",
     "@elastic/eui": "77.2.2",
-    "react": "18.2.0",
     "@emotion/react": "11.11.1",
+    "graphql-request": "5.2.0",
     "next": "13.3.0",
-    "graphql-request": "5.2.0"
+    "react": "18.2.0",
+    "react-query": "3.39.3"
   },
   "module": "./index.js",
   "type": "module",
   "dependencies": {
     "@graphql-typed-document-node/core": "3.2.0",
+    "@storybook/react": "^7.1.0",
     "moment": "2.29.4",
     "use-query-params": "2.2.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.3"
   }
 }

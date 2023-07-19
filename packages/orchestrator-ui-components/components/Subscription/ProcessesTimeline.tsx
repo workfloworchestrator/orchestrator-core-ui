@@ -4,7 +4,7 @@ import {
     EuiComment,
     EuiCommentList,
     EuiSpacer,
-    EuiLoadingContent,
+    EuiLoadingElastic,
 } from '@elastic/eui';
 
 import { ProcessStatusBadge } from '../Badges';
@@ -92,7 +92,7 @@ export const ProcessesTimeline: FC<ProcessesTimelineProps> = ({
     return (
         <>
             <EuiSpacer size={'m'} />
-            {!subscriptionProcesses && <EuiLoadingContent />}
+            {!subscriptionProcesses && <EuiLoadingElastic />}
             <EuiCommentList aria-label="Processes">
                 {subscriptionProcesses && (
                     <EuiCommentList aria-label="Processes">

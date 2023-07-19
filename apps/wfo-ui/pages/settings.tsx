@@ -1,7 +1,7 @@
-import { Settings } from '@orchestrator-ui/orchestrator-ui-components';
+import { Settings } from "@orchestrator-ui/orchestrator-ui-components";
 
 export function SettingsPage() {
-    return <Settings />;
+  return <Settings />;
 }
 
 export default SettingsPage;
