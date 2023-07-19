@@ -1,11 +1,10 @@
 import React from 'react';
 import { EuiBreadcrumb, EuiBreadcrumbs, EuiSpacer } from '@elastic/eui';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { isUuid4, removeSuffix, upperCaseFirstChar } from '../../utils';
 
 export const Breadcrumbs = () => {
     const router = useRouter();
-    const pathName = usePathname();
     // Setup initial breadcrumbs with navigation to home
     const breadcrumbs: EuiBreadcrumb[] = [
         {
@@ -13,13 +12,13 @@ export const Breadcrumbs = () => {
             href: '/',
             onClick: (e) => {
                 e.preventDefault();
-                router.push('/');
+                router.push('/').then();
             },
         },
     ];
 
     // Handle remaining breadcrumbs dynamic
-    const parts = pathName.split('/');
+    const parts = router.asPath.split('/');
     parts.forEach((p, index) => {
         if (index > 0) {
             const link = removeSuffix(parts.slice(0, index + 1).join('/'));
@@ -31,7 +30,7 @@ export const Breadcrumbs = () => {
                 href: link,
                 onClick: (e) => {
                     e.preventDefault();
-                    router.push(link);
+                    router.push(link).then();
                 },
             });
         }

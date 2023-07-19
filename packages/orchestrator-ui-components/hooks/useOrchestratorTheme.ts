@@ -1,4 +1,3 @@
-'use client';
 import { tint, useEuiTheme } from '@elastic/eui';
 
 export const useOrchestratorTheme = () => {
