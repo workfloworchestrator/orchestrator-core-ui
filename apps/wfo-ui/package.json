@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "wfo-ui",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -12,21 +12,32 @@
     "key": "added elastic deps here"
   },
   "dependencies": {
+    "@orchestrator-ui/orchestrator-ui-components": "*",
+    "@elastic/datemath": "^5.0.3",
+    "@elastic/eui": "^85.0.0",
+    "@emotion/css": "^11.11.2",
+    "@emotion/react": "^11.11.1",
+    "@graphql-typed-document-node/core": "3.2.0",
+    "graphql": "16.7.1",
+    "graphql-request": "5.2.0",
+    "moment": "^2.29.4",
     "next": "^13.4.1",
+    "next-intl": "2.19.0",
+    "next-query-params": "4.2.2",
+    "process": "0.11.10",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@elastic/datemath": "^5.0.3",
-    "@elastic/eui": "^77.1.0",
-    "@emotion/css": "^11.10.5",
-    "@emotion/react": "11.11.1",
-    "@orchestrator-ui/orchestrator-ui-components": "*"
+    "react-no-ssr": "1.1.0",
+    "react-query": "3.39.3",
+    "typescript": "5.1.6",
+    "use-query-params": "2.2.1"
   },
   "devDependencies": {
-    "@types/node": "^17.0.12",
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
     "eslint-config-custom": "*",
     "tsconfig": "*",
-    "typescript": "^4.5.3"
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7"
   }
 }
