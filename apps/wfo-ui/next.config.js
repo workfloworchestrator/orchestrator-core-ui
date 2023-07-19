@@ -1,4 +1,8 @@
 module.exports = {
-  reactStrictMode: true,
-  transpilePackages: ["ui"],
+  reactStrictMode: false,
+  transpilePackages: ["orchestrator-ui-components"],
+  i18n: {
+    locales: ['en-US', 'nl'],
+    defaultLocale: 'en-US',
+  }
 };
