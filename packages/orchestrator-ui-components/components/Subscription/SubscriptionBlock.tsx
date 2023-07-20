@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
     EuiButtonEmpty,
     EuiFlexGroup,
@@ -15,7 +13,6 @@ import {
     subscriptionValueCellStyle,
 } from './styles';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RenderField = (field: string, data: any) => {
     if (field === 'status') return <WFOStatusBadge status={data[field]} />;
     else if (field === 'insync')
@@ -35,7 +32,6 @@ export const RenderField = (field: string, data: any) => {
 export const SubscriptionBlock = (title: string, data: object) => {
     const keys = [];
     for (const key in data) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         if (typeof data[key] !== 'object') {
             keys.push(key);

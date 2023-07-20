@@ -53,7 +53,7 @@ export const FlushSettings: FunctionComponent = () => {
                 color: 'success',
                 iconType: 'check',
                 text: (
-                    <p>Cache for cache key "{cacheKey}" flushed successfully</p>
+                    <p>Cache for cache key `${cacheKey}` flushed successfully</p>
                 ),
             });
         });

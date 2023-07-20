@@ -41,7 +41,7 @@ export type FixedInputsBase = GenericField;
 export type ExternalServiceBase = {
     externalServiceKey: string;
     externalServiceId: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line
     externalServiceData: any;
 } & GenericField;
 
