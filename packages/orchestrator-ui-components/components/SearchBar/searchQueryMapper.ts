@@ -9,7 +9,6 @@ export const mapEsQueryContainerToKeyValueTuple = (
     if (queryContainer.match !== undefined) {
         const firstKey: string = Object.keys(queryContainer.match)[0];
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const firstValue: Value = queryContainer.match[firstKey].query;
         return [firstKey, firstValue.toString()];
@@ -18,14 +17,12 @@ export const mapEsQueryContainerToKeyValueTuple = (
     if (queryContainer.match_phrase !== undefined) {
         const firstKey: string = Object.keys(queryContainer.match_phrase)[0];
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const firstValue: string = queryContainer.match_phrase[firstKey];
         return [firstKey, firstValue];
     }
 
     if (queryContainer.simple_query_string !== undefined) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         return ['tsv', queryContainer.simple_query_string.query];
     }

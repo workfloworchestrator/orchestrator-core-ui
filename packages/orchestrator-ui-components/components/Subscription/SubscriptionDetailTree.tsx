@@ -38,11 +38,10 @@ function getProductBlockTitle(resourceType: ResourceTypeBase): string {
         ? `${resourceType.title.substring(0, MAX_LABEL_LENGTH)}...`
         : resourceType.title;
 }
-
+``
 export const SubscriptionDetailTree = () => {
     const [expandAllActive, setExpandAllActive] = useState(false);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [selectedTreeNode, setSelectedTreeNode] = useState(-1);
+    const [_, setSelectedTreeNode] = useState(-1);
 
     const { subscriptionData, loadingStatus } = React.useContext(
         SubscriptionContext,
@@ -69,7 +68,6 @@ export const SubscriptionDetailTree = () => {
             const shallowCopy: TreeBlockOptional = { ...productBlock };
 
             // Each node will have children, so let's give it a "children" property
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             shallowCopy.children = [];
 
@@ -83,7 +81,6 @@ export const SubscriptionDetailTree = () => {
                 shallowCopy.callback = () =>
                     setSelectedTreeNode(shallowCopy.id);
 
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 tree = shallowCopy as TreeBlock;
             } else {
@@ -104,7 +101,6 @@ export const SubscriptionDetailTree = () => {
                 }
 
                 // Let's add the current node as a child of the parent node.
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 parentNode.children?.push(shallowCopy);
             }

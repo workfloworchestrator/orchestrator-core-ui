@@ -8,8 +8,7 @@ export const getStatusBadgeColor = (status: string) => {
     };
     // eslint-disable-next-line no-prototype-builtins
     return statusColors.hasOwnProperty(status)
-        ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
+        ? // @ts-ignore
           statusColors[status]
         : 'primary';
 };
