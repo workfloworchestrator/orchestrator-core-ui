@@ -19,7 +19,7 @@ export const Breadcrumbs = () => {
     ];
 
     // Handle remaining breadcrumbs dynamic
-    const parts = pathName.split('/');
+    const parts = pathName ? pathName.split('/') : []
     parts.forEach((p, index) => {
         if (index > 0) {
             const link = removeSuffix(parts.slice(0, index + 1).join('/'));

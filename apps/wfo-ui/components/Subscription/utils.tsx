@@ -1,10 +1,10 @@
-import { EuiIcon } from "@elastic/eui";
+import { EuiIcon, COLORS } from "@elastic/eui";
 import React from "react";
 
 export function getColor(num: number) {
   if (num === 1) return "warning";
   if (num === 2) return "primary";
-  return "error";
+  return "danger";
 }
 
 export const GENERAL_TAB = "general-id";
