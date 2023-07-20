@@ -2,14 +2,21 @@ import type { Meta } from '@storybook/react';
 import React, { useState } from 'react';
 import { DataSorting } from '../utils/columns';
 import { SortOrder } from '../../../types';
-import { DataGridTable } from './DataGridTable';
+import { DataGridTable, DataGridTableProps } from './DataGridTable';
 
-const extractedArr = (arr, start, howMany) =>
-    arr.filter((_, index) => index >= start && index < howMany + start);
+interface DataGridTestData {
+  id: number,
+  title: string,
+  date: string
+}
 
-const TableWithEvents = (args) => {
+const extractedData = (data: DataGridTestData[], start: number, howMany: number) =>
+    data.filter((_, index) => index >= start && index < howMany + start);
+
+
+const TableWithEvents = (args: DataGridTableProps<DataGridTestData>) => {
     const [data, setData] = useState(
-        extractedArr(
+        extractedData(
             args.data,
             args.pagination.pageIndex,
             args.pagination.pageSize,
@@ -17,36 +24,38 @@ const TableWithEvents = (args) => {
     );
     const [pageSize, setPageSize] = useState(args.pagination.pageSize);
     const [pageIndex, setPageIndex] = useState(args.pagination.pageIndex);
-    const [sorting, setSorting] = useState(args.sorting);
+    const [sorting, setSorting] = useState(args.dataSorting);
 
     const onChangePage = (updatedPageIndex: number) => {
         const pageI = updatedPageIndex * pageSize;
-        setData(extractedArr(args.data, pageI, pageI + pageSize));
+        setData(extractedData(args.data, pageI, pageI + pageSize));
         setPageIndex(updatedPageIndex);
     };
 
     const onChangeItemsPerPage = (updatedPageSize: number) => {
         setData(
-            extractedArr(args.data, pageIndex, pageIndex + updatedPageSize),
+            extractedData(args.data, pageIndex, pageIndex + updatedPageSize),
         );
         setPageSize(updatedPageSize);
     };
 
-    const updateDataSorting = (dataSorting: DataSorting<unknown>) => {
+    const updateDataSorting = (dataSorting: DataSorting<DataGridTestData>) => {
         setSorting(dataSorting);
 
         const sortData = args.data.sort((a, b) => {
-            const aColumn = a[dataSorting.columnId];
-            const bColumn = b[dataSorting.columnId];
-            if (dataSorting.sortDirection === SortOrder.Asc) {
+            const aColumn = a[dataSorting.field];
+            const bColumn = b[dataSorting.field];
+            if (dataSorting.sortOrder === SortOrder.ASC) {
                 return aColumn > bColumn ? 1 : bColumn > aColumn ? -1 : 0;
             }
             return bColumn > aColumn ? 1 : aColumn > bColumn ? -1 : 0;
         });
-        setData(extractedArr(sortData, pageIndex, pageIndex + pageSize));
+        setData(extractedData(sortData, pageIndex, pageIndex + pageSize));
     };
+
     return (
         <DataGridTable
+            <DataGridTestData>
             {...args}
             data={data}
             pagination={{
@@ -62,7 +71,7 @@ const TableWithEvents = (args) => {
     );
 };
 
-const Story: Meta<typeof DataGridTable> = {
+const Story: Meta<typeof DataGridTable<DataGridTestData>> = {
     component: TableWithEvents,
     title: 'Tables/DataGridTable',
     parameters: { actions: { argTypesRegex: '^on*' } },
@@ -87,7 +96,7 @@ const columns = {
 const initialColumnOrder = ['id', 'title', 'date'];
 
 const date = new Date('2023-01-01');
-const data = [
+const data: DataGridTestData[] = [
     { id: 1, title: 'test 1', date: date.toISOString().split('T')[0] },
 ];
 
