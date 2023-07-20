@@ -21,6 +21,12 @@ import {
   GET_SUBSCRIPTION_DETAIL_OUTLINE,
   mapApiResponseToSubscriptionDetail,
 } from "./subscriptionQuery";
+
+import {
+  GetSubscriptionDetailCompleteQuery,
+  GetSubscriptionDetailOutlineQuery,
+} from "../../__generated__/graphql";
+
 import { SubscriptionContext } from "@orchestrator-ui/orchestrator-ui-components";
 import {
   GENERAL_TAB,
@@ -79,7 +85,13 @@ export const Subscription: FC<SubscriptionProps> = ({ subscriptionId }) => {
     fetchSubscriptionOutline,
     {
       onSuccess: (data) =>
-        setSubscriptionData(mapApiResponseToSubscriptionDetail(data, false), 1),
+        setSubscriptionData(
+          mapApiResponseToSubscriptionDetail(
+            data as GetSubscriptionDetailOutlineQuery,
+            false
+          ),
+          1
+        ),
     }
   );
   const { data: dataComplete } = useQuery(
@@ -87,19 +99,34 @@ export const Subscription: FC<SubscriptionProps> = ({ subscriptionId }) => {
     fetchSubscriptionComplete,
     {
       onSuccess: (data) =>
-        setSubscriptionData(mapApiResponseToSubscriptionDetail(data, true), 2),
+        setSubscriptionData(
+          mapApiResponseToSubscriptionDetail(
+            data as GetSubscriptionDetailCompleteQuery,
+            true
+          ),
+          2
+        ),
     }
   );
 
   if (dataComplete && subscriptionData.subscriptionId === "") {
     console.log("No data in context populating dataComplete from cache");
     setSubscriptionData(
-      mapApiResponseToSubscriptionDetail(dataComplete, true),
+      mapApiResponseToSubscriptionDetail(
+        dataComplete as GetSubscriptionDetailCompleteQuery,
+        true
+      ),
       2
     );
   } else if (!dataComplete && data && subscriptionData.subscriptionId === "") {
     console.log("No data in context populating dataOutline from cache");
-    setSubscriptionData(mapApiResponseToSubscriptionDetail(data, false), 1);
+    setSubscriptionData(
+      mapApiResponseToSubscriptionDetail(
+        data as GetSubscriptionDetailCompleteQuery,
+        false
+      ),
+      1
+    );
   }
 
   const renderTabs = () =>

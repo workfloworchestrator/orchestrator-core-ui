@@ -3,7 +3,7 @@ import React from 'react';
 import {
     EuiFlexGrid,
     EuiFlexItem,
-    EuiLoadingContent,
+    EuiLoadingLogo,
     EuiSpacer,
 } from '@elastic/eui';
 import { SubscriptionContext } from '../../contexts/SubscriptionContext';
@@ -17,7 +17,7 @@ export const SubscriptionGeneral = () => {
         return (
             <>
                 <EuiSpacer size={'m'} />
-                <EuiLoadingContent />
+                <EuiLoadingLogo />
             </>
         );
     }

@@ -1,8 +1,10 @@
 import { graphql } from "../../__generated__";
+import { TypedDocumentNode } from "@graphql-typed-document-node/core";
 import {
   GetSubscriptionDetailCompleteQuery,
   GetSubscriptionDetailOutlineQuery,
 } from "../../__generated__/graphql";
+
 import {
   CustomerBase,
   ExternalServiceBase,
@@ -49,7 +51,7 @@ export const GET_SUBSCRIPTION_DETAIL_OUTLINE = graphql(`
       }
     }
   }
-`);
+`) as TypedDocumentNode;
 
 export const GET_SUBSCRIPTION_DETAIL_COMPLETE = graphql(`
   query GetSubscriptionDetailComplete($id: ID!) {
@@ -127,7 +129,7 @@ export const GET_SUBSCRIPTION_DETAIL_COMPLETE = graphql(`
       }
     }
   }
-`);
+`) as TypedDocumentNode;
 
 export function mapApiResponseToSubscriptionDetail(
   graphqlResponse:

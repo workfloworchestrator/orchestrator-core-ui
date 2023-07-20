@@ -13,7 +13,7 @@ import {
     EuiCallOut,
     EuiFlexGroup,
     EuiFlexItem,
-    EuiLoadingContent,
+    EuiLoadingLogo,
     EuiSearchBar,
     EuiText,
 } from '@elastic/eui';
@@ -139,7 +139,7 @@ export const SubscriptionDetailTree = () => {
                         </EuiFlexGroup>
                     </EuiFlexItem>
                     <EuiFlexItem grow={true}>
-                        {!tree && <EuiLoadingContent />}
+                        {!tree && <EuiLoadingLogo />}
                         {tree && <Tree data={[tree]} />}
                     </EuiFlexItem>
                 </EuiFlexGroup>
